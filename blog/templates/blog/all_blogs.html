@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>Honzík napsal {{ blog_count }} blogy!</h2>
+
+
+<br>
+
+{% for blog in blogs %}
+
+<a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+<h5>{{ blog.date|date:'j. n. Y' }}</h5>
+<p>{{ blog.description|striptags|truncatechars:300 }}</p>
+
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<img src="{% static 'portfolio/imageofme2.jfif' %}" style="width:50%;height:50%;">
+
+<div class="row justify-content-center mb-3" id="junk">
+  <div class="col-md-9 text-center">
+    <h1>Jsem student z českobudějovického gymnázia a zabývám se programováním webových stránek.</h1>
+  </div>
+</div>
+
+<h2 class="mt-5">Portfolio</h2>
+<hr/>
+
+
+{% for project in projects %}
+  <div class="card m-3 p-2 alert-secondary bg-light">
+    <div class="row no-gutters">
+      <div class="col-md-4 ">
+        <img src="{{ project.image.url }}" class="card-img-top" alt="project {{ forloop.counter }}" style="max-height: 200px;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.description }}</p>
+          <a href="{{ project.show1.url }}" class="btn btn-dark" target="_blank">Ukázka</a>
+          <a href="{{ project.url }}" class="btn btn-info" target="_blank">Kód</a>
+          <a href="{{ project.show2.url }}" class="btn btn-dark" target="_blank">Ukázka</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+
+<!-- <div class="card bg-light m-3 p-2">
+  <div class="">
+    <div class="d-flex justify-content-end">
+      <div class="container">
+        <h5 class="card-title">{{ project.title }}</h5>
+        <p class="card-text">{{ project.description }}</p>
+        <a href="{{ project.show1.url }}" class="btn btn-dark" target="_blank">Ukázka</a>
+        <a href="{{ project.url }}" class="btn btn-info" target="_blank">Kód</a>
+        <a href="{{ project.show2.url }}" class="btn btn-dark" target="_blank">Ukázka</a>
+      </div>
+      <div class="col-md-5">
+        <img src="{{ project.image.url }}" class="" alt="project {{ forloop.counter }}" style="max-height: 180px;">
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+{% endblock %}

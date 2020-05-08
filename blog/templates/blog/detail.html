@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mt-5" id="blogdetailtitle">{{ blog.title }}</h1>
+<h6 class="text-muted mb-5">{{ blog.date|date:'j. n. Y' }}</h6>
+
+<div class="text-left">
+  {{ blog.description|safe }}
+</div>
+
+
+<br>
+{% if blog.id|add:"1" %}
+<a href="{% url 'blog:all_blogs' %}" class="text-decoration-none mt-5 pb-5">zpět na všechny blogy</a>
+<a class="btn btn-primary" href="../{{ blog.id }}" role="button">číst další blog</a>
+{% endif %}
+{% endblock %}
